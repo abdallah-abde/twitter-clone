@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
@@ -9,7 +10,13 @@ export default function Home() {
       <Head>
         <title>Twitter Clone</title>
       </Head>
-      <h1>hello</h1>
+      <main className="flex min-h-screen max-w-7xl mx-auto">
+        {/* Sidebar */}
+        <Sidebar />
+        {/* Feed */}
+        {/* Widgets */}
+        {/* Modal */}
+      </main>
     </>
   );
 }
