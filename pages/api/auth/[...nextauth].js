@@ -16,7 +16,6 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      console.log(session, token);
       session.user.username = session.user.name
         .split(" ")
         .join("")
