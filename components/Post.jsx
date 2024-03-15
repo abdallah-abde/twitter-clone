@@ -57,6 +57,11 @@ export default function Post({ post }) {
 
   const deletePost = async () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
+      onSnapshot(collection(db, "posts", post.id, "likes"), (snapshot) => {
+        snapshot.docs.map((d) => {
+          deleteDoc(doc(db, "posts", post.id, "likes", d.id));
+        });
+      });
       deleteDoc(doc(db, "posts", post.id));
       if (post.data().image) {
         deleteObject(ref(storage, `posts/${post.id}/image`));
