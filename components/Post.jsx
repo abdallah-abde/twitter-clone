@@ -58,7 +58,9 @@ export default function Post({ post }) {
   const deletePost = async () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       deleteDoc(doc(db, "posts", post.id));
-      deleteObject(ref(storage, `posts/${post.id}/image`));
+      if (post.data().image) {
+        deleteObject(ref(storage, `posts/${post.id}/image`));
+      }
     }
   };
 
@@ -94,11 +96,13 @@ export default function Post({ post }) {
         </p>
 
         {/* post image */}
-        <img
-          className="rounded-2xl mr-2"
-          src={post.data().image}
-          alt="Post image"
-        />
+        {post.data().image && (
+          <img
+            className="rounded-2xl mr-2"
+            src={post.data().image}
+            alt="Post image"
+          />
+        )}
 
         {/* icons */}
         <div className="flex justify-between text-gray-500 p-2">
