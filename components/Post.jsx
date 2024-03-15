@@ -70,14 +70,14 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="flex p-3 cursor-pointer border-b border-gray-200">
+    <div className="flex p-3 cursor-pointer border-b border-gray-200 w-full">
       {/* User image */}
       <img
         src={post.data().userImg}
         alt={post.data().username}
         className="h-11 w-11 rounded-full mr-4"
       />
-      <div className="">
+      <div className="w-full">
         {/* Header */}
         <div className="flex items-center justify-between">
           {/* Post user info */}
@@ -102,11 +102,13 @@ export default function Post({ post }) {
 
         {/* post image */}
         {post.data().image && (
-          <img
-            className="rounded-2xl mr-2"
-            src={post.data().image}
-            alt="Post image"
-          />
+          <div className="flex items-center justify-center">
+            <img
+              className="rounded-2xl mr-2"
+              src={post.data().image}
+              alt="Post image"
+            />
+          </div>
         )}
 
         {/* icons */}
